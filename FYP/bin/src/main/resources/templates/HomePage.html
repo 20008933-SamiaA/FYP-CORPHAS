@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<style>
+/* * {
+	box-sizing: border-box;
+}
+ */
+.btn-text-center {
+	text-align: center;
+	padding: 10px
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: both;
+}
+/* for image to be reponsive */
+/* @media screen and (max-width: 500px) {
+	.column {
+		width: 100%
+	}
+} */
+p {
+	font-size: 50px;
+	text-align: center
+}
+
+footer {
+	position: fixed;
+	padding: 10px 10px 0px 10px;
+	bottom: 0;
+	width: 100%;
+	/* Height of the footer*/
+	height: 50px;
+}
+
+h6 {
+	text-align: center;
+}
+.container{
+background-image:url("images/kv1_1400x799_peh.jpg");
+width: 100%;
+height: 100%;
+object-fit: cover;
+background-attachment: fixed;
+background-size: 100% 100%;
+}
+</style>
+
+<title>CorpHas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: lightblue;">
+	<div>
+		<div>
+			<div th:replace="fragments/header"></div>
+			<div class="container my-5 pt-5 bg-light"
+				style="height: 500px; border-style: solid;">
+
+				<!-- to make the buttons and words be in the center (move downwards) -->
+				<p>
+					<b>Healthy living starts with you!</b>
+				</p>
+				<br />
+				<br />
+				<p style="font-size: 40px; border-style: solid; border-width: 1px;">
+					Register | Sign In!</p>
+
+				<div class="btn-text-center">
+					<br />
+					<br />
+					<br />
+					<a  class=" btn btn-primary"
+						type="submit" href="/users/add">Register an account</a>
+
+					<a sec:authorize="!isAuthenticated()" class=" btn btn-primary"
+						type="submit" href="/home">Login</a>
+
+				</div>
+
+				<h6>For enquiries, Email us at corphas@parkwaylab.com</h6>
+			</div>
+		</div>
+		<div th:replace="fragments/footer"></div>
+
+	</div>
+
+</body>
+</html>
+

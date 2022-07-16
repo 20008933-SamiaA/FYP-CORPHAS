@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CorpHAS - View Items in Package</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+
+</head>
+<body>
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<br> <br>
+		<table class="table table-bordered table-hover" border=1 width=100%>
+			<thead>
+
+
+		
+
+					<th>Test ID</th>
+					<th>Test Name</th>
+					<th>Test Result</th>
+					<th>Action</th>
+					
+
+
+			
+			</thead>
+			<tbody>
+
+				<tr th:each="test_results : ${trList}">
+					<td th:text="${test_results.id}"></td>
+					<td th:text="${test_results.items.name}"></td>
+					<td th:text="${test_results.result}"></td>
+
+
+
+					<td><a th:href=@{/testresults/edit/{id}(id=${test_results.id})}>Update Test Result</a></td>
+					
+				</tr>
+
+
+
+
+			</tbody>
+		</table>
+</body>
+</html>

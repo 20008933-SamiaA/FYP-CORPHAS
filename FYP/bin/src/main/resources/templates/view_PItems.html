@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CorpHAS - View Items in Package</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+	<div class="container">
+		<br>
+  		<tr th:each="package_item,iterStat : ${listPItems}" th:if="${iterStat.index} <1">
+		
+		<div class="h1"><td th:text="${package_item.packages.pname}"></td></tr></div>
+		<br>
+		<table class="table table-bordered table-hover" border=1 width=100%>
+			<thead>
+				<tr>
+
+					<th>Package Item ID</th>
+					<th>Package Name</th>	
+					<th>Item Name</th>
+					<th>Item Category</th>
+				
+		
+
+			</thead>
+			<tbody>
+
+				<tr th:each="package_item : ${listPItems}">
+						<td th:text="${package_item.package_item_id}"></td>
+						<td th:text="${package_item.packages.pname}"></td>
+						<td th:text="${package_item.items.name}"></td>
+                        <td th:text="${package_item.items.category}"></td>
+                        
+                     
+						
+                        <td><a th:href="@{/Pitems/edit/{id}(id=${package_item.package_item_id})}">Edit</a></td>
+					<td><a th:href="@{/Pitems/delete/{id}(id=${package_item.package_item_id})}"
+							onclick="return confirm('Are you sure you want to delete this item?');"
+							id="delete_id">Delete</a></td>
+					
+					
+					</tr>
+			
+			</tbody>
+		</table>
+		
+		
+		
+</body>
+</html>

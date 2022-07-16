@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>BookLink - Edit new Item</title>
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Edit Item</h1>
+		<form th:action="@{/items/edit/{id}(id=${item.id})}"
+			th:object="${item}" method="post">
+
+
+			<div class="mb-3 col-5">
+				<label for="item_name" class="form-label">Name:</label> <input
+					id="item_name" type="text" class="form-control" th:field="*{name}"
+					required minlength=5 maxlength=50>
+
+				<div class="invalid-feedback">Item Name length must be 5 to 50
+					characters!</div>
+
+
+			</div>
+
+			<div class="mb-3 col-5">
+				<label for="item_category" class="form-label">Category:</label> <input
+					id="item_category" type="text" class="form-control"
+					th:field="*{category}" required minlength=5 maxlength=50>
+
+				<div class="invalid-feedback">Item Category length must be 5
+					to 50 characters!</div>
+
+			</div>
+
+			<div class="mb-3 col-5">
+				<label for="item_info" class="form-label">Information:</label> <input
+					id="item_info" type="text" class="form-control"
+					th:field="*{information}" required minlength=5 maxlength=50>
+
+				<div class="invalid-feedback">Item Information length must be
+					5 to 50 characters!</div>
+
+			</div>
+
+			<div class="mt-3 mb-5">
+				<input type="submit" value="Update Item">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

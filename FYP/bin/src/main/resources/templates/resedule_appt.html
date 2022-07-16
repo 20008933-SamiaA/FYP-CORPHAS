@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Corphas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script th:inline="javascript" src="/bootstrap/css/bootstrap.js"></script>
+<script
+	src="https://www.paypal.com/sdk/js?client-id=AUf2yEeU22WuFEPJrVzrZT28Hmu02kqjKMIleUgEVl2zqa2CjmMeBdI_QLz8oGiTuwB9ZW7cd0xX-hXZ&currency=SGD&components=buttons">
+	
+</script>
+<script src="/bootstrap/css/bootstrap.js"></script>
+
+<style type="text/css">
+.form-style-5 {
+	max-width: 500px;
+	padding: 10px 20px;
+	background: #f4f7f8;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.form-style-5 fieldset {
+	border: none;
+}
+
+.form-style-5 legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.form-style-5 input[type="text"], .form-style-5 input[type="date"],
+	.form-style-5 input[type="datetime"], .form-style-5 input[type="email"],
+	.form-style-5 input[type="number"], .form-style-5 input[type="search"],
+	.form-style-5 input[type="time"], .form-style-5 input[type="url"],
+	.form-style-5 textarea, .form-style-5 select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255, 255, 255, .1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #e8eeef;
+	color: black;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+	margin-bottom: 30px;
+}
+
+.form-style-5 input[type="text"]:focus, .form-style-5 input[type="date"]:focus,
+	.form-style-5 input[type="datetime"]:focus, .form-style-5 input[type="email"]:focus,
+	.form-style-5 input[type="number"]:focus, .form-style-5 input[type="search"]:focus,
+	.form-style-5 input[type="time"]:focus, .form-style-5 input[type="url"]:focus,
+	.form-style-5 textarea:focus, .form-style-5 select:focus {
+	background: #d2d9dd;
+}
+
+.form-style-5 .number {
+	background: #1abc9c;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"], .form-style-5 input[type="button"] {
+	position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: #1abc9c;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 100%;
+	border: 1px solid #16a085;
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+}
+
+.form-style-5 input[type="submit"]:hover, .form-style-5 input[type="button"]:hover
+	{
+	background: #109177;
+}
+</style>
+
+</head>
+<body style="background-color: #CCCCFF;">
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<br>
+		<div class="w-100"></div>
+		<div class="row">
+
+			<div class="col" style="background-color: lightgrey;">
+				<br>
+				<br>
+				<br>
+				<p class="d-flex justify-content-center" style="font-size: 20px;">
+					<b><u>STEPS:</u></b>
+				</p>
+				<p class="d-flex justify-content-center">1. About You</p>
+				<p class="d-flex justify-content-center">
+					<font size="+2">|</font>
+				</p>
+				<p class="d-flex justify-content-center">2. Appointment</p>
+				<p class="d-flex justify-content-center">
+					<font size="+2">|</font>
+				</p>
+				<p class="d-flex justify-content-center">3. Screen Advisory</p>
+				<p class="d-flex justify-content-center">
+					<font size="+2">|</font>
+				</p>
+				<p class="d-flex justify-content-center">4. Screening Tests</p>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div class="col-9  btn-text-center form-style-5">
+				<div class="mb-3 col-10">
+					<form th:action="@{/appt/reschedule/{id}(id=${appointment.apptid})}"  method="post"
+						th:object="${appointment}" class="needs-validation" novalidate>
+
+
+
+						<fieldset>
+							<legend>
+								<span class="number">1</span>Appointment Details
+							</legend>
+							<!--Employee Details-->
+												<label
+					for="appt_name" class="form-label">Full Name:</label> <input
+					id="appt_name" type="text" class="form-control"
+					th:field="*{name}" readonly /> <label
+								for="appt_corporateid" class="form-label">Corporate id:</label>
+							<input id="appt_corporateid" type="text"
+								class="form-control center" th:field="*{corporateid}" placeholder="CORPXXXX *" required readonly />
+							<div class="invalid-feedback">Please enter Corporate ID.</div>
+							<label for="appt_corporateid" class="form-label">Employee
+								id:</label> <input id="appt_corporateid" type="text"
+								class="form-control center" th:field="*{employeeid}" placeholder="EMPXXXX *"  readonly/>
+							<div class="invalid-feedback">Please enter Employee ID.</div>
+							<label for="appt_emptype" class="form-label">Employee
+								Type: </label> <select th:field="*{emptype}"
+								style="width: 800px; height: 40px; text-align: center;">
+								<option th:each="emptype: ${listEmptype}"
+									th:value="${emptype.id}" th:text="${emptype.emptype}"></option>
+							</select>
+							<div class="invalid-feedback">Select Employee Type.</div>
+							
+								<!--Appointment Details-->
+							<label for="appt_package" class="form-label">Package: </label>
+							<select th:field="*{packages}"
+								style="width: 800px; height: 40px; text-align: center;">
+								<option value="">Choose one</option>
+								<option th:each="packages: ${listPackage}"
+									th:value="${packages.id}" th:text="${packages.pname}"></option>
+							</select>
+							<div class="invalid-feedback">Select Package.</div>
+							<label for="appt_DT" class="form-label">Date: </label> <input
+								id="appt_DT" type="date" class="form-control" th:field="*{date}"
+								required min="2022-01-01" />
+							<div class="invalid-feedback">Choose Date.</div>
+					
+								
+							<label for="appt_timesch" class="form-label">Time Slot: </label> <select th:field="*{timesch}"
+								style="width: 800px; height: 40px; text-align: center;" required>
+								<option th:each="timesch: ${listTimeSchedule}"
+									th:value="${timesch.id}" th:text="${timesch.time}"></option>
+							</select>
+										<div class="invalid-feedback">Choose Time Slot.</div>
+						
+							<label for="appt_doctor" class="form-label">Preferred
+								Doctor(if any)</label> <input id="appt_doctor" type="text"
+								class="form-control" th:field="*{doctor}" /> <label
+								for="appt_location" class="form-label">Location:</label> <input
+								id="appt_location" type="text" class="form-control"
+								value="Parkway East Hospital" th:field="*{location}" readonly />
+					<label for="appt_status"
+					class="form-label">Status:</label> <input id="appt_status"
+					type="text" class="form-control" th:field="*{status}" placeholder="Pending/Completed" readonly/>
+							<legend>
+								<span class="number">2</span> Additional Info
+							</legend>
+							<textarea name="field3" placeholder=""></textarea>
+						</fieldset>
+						<input type="submit" value="Next" />
+					</form>
+				</div>
+				<script>
+					'use strict'
+					var form = document.querySelector('.needs-validation')
+					form.addEventListener('submit', function(event) {
+						if (!form.checkValidity()) {
+							event.preventDefault()
+							event.stopPropagation()
+						}
+						form.classList.add('was-validated')
+					})
+				</script>
+				<script>
+					// Get your element
+					var input = document.getElementById('appt_location');
+
+					// get the value
+					var value = input.value;
+
+					// set the value
+					input.value = "Parkway East Hospital ";
+				</script>
+
+			</div>
+
+
+
+
+
+		</div>
+
+
+
+	</div>
+
+	
+
+	<div th:replace="fragments/footer"></div>
+
+
+</body>
+</html>

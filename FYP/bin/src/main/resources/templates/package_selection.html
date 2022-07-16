@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Corphas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script th:inline="javascript" src="/bootstrap/css/bootstrap.js"></script>
+<script 									 
+src="https://www.paypal.com/sdk/js?client-id=AUf2yEeU22WuFEPJrVzrZT28Hmu02kqjKMIleUgEVl2zqa2CjmMeBdI_QLz8oGiTuwB9ZW7cd0xX-hXZ&currency=SGD&components=buttons">
+</script>
+<style>
+.btn-text-center {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<div th:replace="fragments/header"></div>
+	<div class="container">
+	
+	<!-- the table starts here -->
+  <div class="row">
+    <div class="col" style="background-color:lightgrey;">
+      Steps
+    </div>
+    <div class="col-6" style="color:#3D86FB;">
+      <h2>Screening Tests</h2>
+    </div>
+    <div class="col" style="color:#3D86FB;">
+      <h2> My Info</h2>
+    </div>
+  </div>
+  <div class="w-100"></div>
+  <div class="row">
+<div class="col" style="background-color:lightgrey;">
+<p class="d-flex justify-content-center">1. About You</p>
+<p class="d-flex justify-content-center"><font size="+2">|</font></p>      
+<p class="d-flex justify-content-center">2. Appointment</p>
+<p class="d-flex justify-content-center"><font size="+2">|</font></p>
+<p class="d-flex justify-content-center">3. Screen Advisory</p>
+<p class="d-flex justify-content-center"><font size="+2">|</font></p>
+<p class="d-flex justify-content-center">4. Screening Tests</p>
+    </div> 
+    
+    <!-- the table ends here -->
+    
+    
+    <div class="col-6  btn-text-center">
+      <table class="table table-bordered" id="tableID" style="width:100%;" border=1>
+				<thead class="table-primary">
+					<tr>
+						<th>Packages</th>
+						<th>cost</th>
+						<th>Option</th>
+					</tr>
+				</thead>
+				<tbody>
+				<th:block th:each="package : ${listPackages}">
+				<tr th:id="${package.id}">
+					<td><a th:href=@{/Pitems/package/{id}(id=${package.id})}><span
+								th:text="${package.pname}"></span></a></td>
+					<td th:id="'cost_' + ${package.id}" th:text="'$'+ ${package.cost}" class="package"></td>
+					<td><a href="javascript:;" th:id="'btn_' + ${package.id}" th:onclick="'setSelectStatus(' + ${package.id} + ')'" class="btn btn-primary">Add</a></td>
+				</tr>
+					</th:block>
+				</tbody>
+				<!-- <tr  style="background-color:#E0E7EE;"><th class="d-flex"><p id="packagePrice">$0.00</p> </th> -->
+			</th:block>
+			</table>
+				<a class=" btn btn-primary" type="submit"
+						href="/screenadvisory">Back</a> 
+						<a class=" btn btn-primary"
+						type="submit" href="/cart">Next</a>
+    </div>
+    	 		
+		 		<script>
+				function setSelectStatus(rowtr) {
+					if(typeof window.lastbtnclicked != "undefined"){ //checks if the button was last clicked
+						document.getElementById(window.lastbtnclicked).className = "btn btn-primary";
+						document.getElementById(window.lastbtnclicked).innerHTML = "Add"
+					}
+					/* var table = document.getElementById("tableID");
+					var row = table.rows[index] */
+					const el = document.getElementById(rowtr);
+					var something = el.children[1].innerHTML; //this is the 2nd column of the package table
+					document.getElementById("total_cost").innerHTML = something;
+
+					document.getElementById("btn_" + rowtr).className = "btn btn-outline-secondary fw-bolder";
+	/* 				border-color: #2196F3; */
+					document.getElementById("btn_" + rowtr).innerHTML = "Selected";
+					window.lastbtnclicked = "btn_" + rowtr; // this assigns the last button clicked
+	
+				
+		}</script>
+    <div class="col">
+      <table class="table table-bordered">
+  <tr class="table-primary">
+    <th>NRIC</th>
+  </tr>
+  <tr>
+    <td><span sec:authentication="principal.name"></span>
+    </td>
+  </tr>
+  
+  <tr>
+  	<td>Gender:</td>
+  </tr>
+  
+    <tr>
+  	<td><span sec:authentication="principal.email"></span>
+  	</td>
+  </tr>
+  
+    <tr>
+  	<td>Mobile No:</td>
+  </tr>
+
+    
+   </table> 
+   <div style = "clear:both;"></div>
+     <div class="col">
+      <table class="table table-bordered align-center">
+  <tr class="table-primary">
+    <th>Appointment</th>
+  </tr>
+  <tr>
+    <td>Date: </td>
+  </tr>
+  
+  <tr>
+  	<td>Time:</td>
+  </tr>
+  
+    <tr>
+  	<td>Location:</td>
+  </tr>
+ 
+</table>
+
+    </div>
+      <div class="col">
+      <table class="table table-bordered align-center">
+  <tr class="table-primary">
+    <th>Screening Tests</th>
+  </tr>
+    <tr>
+    <td>Total: <span id="total_cost">0.0</span></td>
+  </tr>
+  </table>
+  </div>
+  <div th:replace="fragments/paypal"></div>
+</div>
+</div>
+<div th:replace="fragments/footer"></div>
+		</div>
+
+</body>
+</html>

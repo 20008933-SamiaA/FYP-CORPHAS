@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<style>
+/* * {
+	box-sizing: border-box;
+	padding: 1px
+}
+ */
+.btn-text-center {
+	text-align: center;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: both;
+}
+/* for image to be reponsive */
+/* @media screen and (max-width: 500px) {
+	.column {
+		width: 100%
+	}
+} */
+footer {
+	position: fixed;
+	padding: 10px 10px 0px 10px;
+	bottom: 0;
+	width: 100%;
+	/* Height of the footer*/
+	height: 50px;
+}
+
+h6 {
+	text-align: center;
+}
+
+center {
+	text-align: center;
+}
+
+ol {
+	width: 50%;
+	margin: auto;
+}
+</style>
+
+<title>CorpHas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color:#CCCCFF;">
+	<div>
+		<div>
+			<div th:replace="fragments/header"></div>
+			<div class="container my-5 pt-5 bg-light"
+				style="height: 500px; border-style: solid;">
+
+				<!-- to make the buttons and words be in the center (move downwards) -->
+				<p style="font-size: 40px; text-align: center;">
+					<b>-Screen Advisory-</b>
+				</p>
+				<div class="btn-text-center">
+					<ol>
+						<li>Health screening guidelines by Heatlh Promotion Board can
+							be found<a
+							href="https://www.healthhub.sg/live-healthy/403/abcs_of_health_screening" target="_blank">Here!</a>
+						</li>
+						<br>
+						<li>Health screening seels to detect diseases unknown to
+							you.Should you have symptoms of, or already have a known
+							condition, kindly consult your doctor for diagnosis and
+							follow-ups.</li>
+						<br>
+						<li>Screening tests may carry limitations in the capacity to
+							identify or rule our the presence/absence of a condition</li>
+						<br>
+						<li>If there is an queries about yout screening tests, do
+							visit us prior to your screen or email us at
+							<u>cpac@parkwaypantai.com</u></li>
+					</ol>
+							<p>
+					<b>Thank you </b>
+				</p>
+						<a class=" btn btn-primary"
+						type="submit" href="/appt">Next</a>
+				</div>
+
+			</div>
+			<div th:replace="fragments/footer"></div>
+
+		</div>
+</body>
+</html>
+
+

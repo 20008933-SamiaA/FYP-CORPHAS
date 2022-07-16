@@ -1,0 +1,159 @@
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- CSS only -->
+<style>
+.navbar .navbar-nav .nav-link:hover {
+	background-color: #CDD7E2;
+	color: #fff;
+}
+
+.navbar .navbar-nav .nav-link {
+	padding: 0.6em;
+}
+
+.navbar .navbar-brand {
+	padding: 0 0.0em;
+}
+
+@media only screen and (min-width: 600px) {
+	.navbar {
+		padding: 0;
+	}
+	.navbar .navbar-nav .nav-link {
+		padding: 1.3em 0.6em;
+	}
+}
+
+#header {
+	position: fixed;
+}
+
+#content {
+	margin-top: 100px;
+}
+
+</style>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		<a class="navbar-brand" href="#"> <img src="/images/corphas.jpg"
+			class="img-fluid" style="width: 73%;"> <!-- <span class="navbar-brand h1">CorpHas</span> -->
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<!-- Home -->
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/home">Home</a></li>
+
+		<!-- Packages and Items -->
+        <li class="nav-item dropdown"><a
+          class="nav-link text-primary dropdown-toggle"
+          data-bs-toggle="dropdown" href="/packages">Our Packages</a>
+          <div class="dropdown-menu" style="background-color: #fdad5c;">
+            <a class="dropdown-item" href="/packages">Check out our
+              packages</a> <a class="dropdown-item" href="/items">Items</a> <a
+              class="dropdown-item" href="/images/PackageSummary.pdf" download>
+              [Download Package Summary Here!]</a>
+          </div></li>
+
+
+				<!-- Users -->
+				<div sec:authorize="hasRole('ADMIN')">
+					<li class="nav-item dropdown"><a
+						class="nav-link text-primary dropdown-toggle"
+						data-bs-toggle="dropdown" href="">Users</a>
+						<div class="dropdown-menu" style="background-color: #fdad5c;">
+							<a class="dropdown-item" href="/users">[Users]</a> <a
+								class="dropdown-item" href="/employee">[Employee]</a> <a
+								class="dropdown-item" href="/managers">[Managers]</a> <a
+								class="dropdown-item" href="/counterstaff">[Counter Staff]</a>
+
+						</div></li>
+				</div>
+				
+				<!-- Company -->
+				<div sec:authorize="hasAnyRole('ADMIN','COUNTERSTAFF','HR')">
+					<li class="nav-item"><a class="nav-link text-primary"
+						href="/company">Corporate</a></li>
+				</div>
+					<!-- Company -->
+				<div sec:authorize="hasRole('HR')">
+					<li class="nav-item"><a class="nav-link text-primary"
+						href="/employee">Employee</a></li>
+				</div>
+
+				<!--Patients-->
+				<div sec:authorize="hasAnyRole('ADMIN','COUNTERSTAFF')">
+					<li class="nav-item dropdown"><a
+						class="nav-link text-primary dropdown-toggle"
+						data-bs-toggle="dropdown" href="">For Patients</a>
+						<div class="dropdown-menu" style="background-color: #fdad5c;">
+							<a class="dropdown-item" href="/patients">[All Patients]</a> <a
+								class="dropdown-item" href="/appt">[All Appointments]</a> 
+
+
+						</div></li>
+				</div>
+								<!-- Survey -->
+				<div sec:authorize="hasRole('ADMIN')">
+					<li class="nav-item dropdown"><a
+						class="nav-link text-primary dropdown-toggle"
+						data-bs-toggle="dropdown" href="">Survey & Report</a>
+						<div class="dropdown-menu" style="background-color: #fdad5c;">
+							<a class="dropdown-item" href="/response">[Survey Response]</a> <a
+								class="dropdown-item" href="/questions">[Survey Question]</a> 
+				
+
+						</div></li>
+				</div>
+			<div sec:authorize="hasRole('USER')">
+				<!-- Appointment -->
+				<li class="nav-item "><a class="nav-link text-primary"
+					href="/appt2">Appointment</a></li>
+</div>
+
+
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/aboutus">About Us</a></li>
+
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/contactus">Contact Us</a></li>
+				<li class="nav-item d-flex mx-5 px-5"><a
+					sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Login</a>
+					<form sec:authorize="isAuthenticated()" th:action="@{/logout}"
+						method="post" class="">
+						<button class="btn nav-link btn-warning text-primary"
+							type="submit">Logout</button>
+					</form></li>
+
+				<li class="nav-item mx-5 ">
+					<div sec:authorize="isAuthenticated()">
+						<a data-toggle="tooltip" data-placement="bottom" data-html="true"
+							title="account details" class="nav-link" href="#"><span
+							sec:authentication="principal.username"></span></a>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+
+	</nav>
+</header>
+<!-- 		<div sec:authorize="isAuthenticated()">
+			<h4 class="text-center">Hello <span sec:authentication="principal.username"></span>!</h4>
+		</div> -->

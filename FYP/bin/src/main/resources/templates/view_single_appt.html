@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Appointment- View Appt</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+<style>
+.btn-text-center {
+	text-align: center;
+}
+</style>
+</head>
+<body style="background-color: #CCCCFF;">
+	<div th:replace="fragments/header"></div>
+	<div class="container" style="text-align: center;">
+
+		<main>
+			<br>
+
+			<div class="container my-5 pt-5 bg-light"
+				style="height: 600px; border-style: solid;">
+				<p style="font-size: 40px; text-align: center; color: orange;">
+					<b>APPOINTMENT DETAILS</b>
+				</p>
+				<label>Appointment ID:</label>
+				<h3 th:text="${appt.apptid }"></h3>
+				<label>Date & Time:</label>
+				<h3 th:text="${appt.date}"></h3>
+				<h3 th:text="${appt.timesch.time}"></h3>
+				<label>Location:</label>
+
+
+
+				<h3 th:text="${appt.location}"></h3>
+				<label>Package Details:</label>
+				<h3 th:text="${appt.packages.pname}"></h3>
+				<h3>
+					$<span th:text="${appt.packages.cost}"></span>
+				</h3>
+	
+
+			<form th:action="@{/cart/add/{apptId}(apptId=${appt.apptid})}"
+				method="post">
+				<button class="btn btn-primary">Make Payment</button>
+
+					</form>
+					<br>
+								<button  class="btn btn-warning" onclick="myFunction()" id="demo">CANCEL APPT</button>
+			</div>
+
+
+		
+		</main>
+		<script>
+document.getElementById("demo").addEventListener("click", myFunction);
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Appointment Cancelled";
+}
+</script>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>
+
+
+
+
+

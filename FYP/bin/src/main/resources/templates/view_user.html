@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CorpHas- View Users</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+<style>
+.btn-text-center {
+	text-align: center;
+}
+</style>
+</head>
+<body  style="background-color:#FFFACD;">
+		<div th:replace="fragments/header"></div>
+		<div class="container">
+		<main class="btn-text-center">
+			<div class="h1">- Users -</div>
+			<div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+			<table class="table table-bordered table-hover btn-text-center">
+				<thead class="table-primary">
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Username</th>
+						<th>Email</th>
+						<th>Role</th>
+						<th>Action</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="corpuser : ${listUser}">
+						<td th:text="${corpuser.id}"></td>
+						<td th:text="${corpuser.name}"></td>
+						<td th:text="${corpuser.username}"></td>
+						<td th:text="${corpuser.email}"></td>
+						<td th:text="${corpuser.role}"></td>
+						
+						<td><a th:href="@{/users/edit/{id}(id=${corpuser.id})}">Edit</a>
+							| <a th:href="@{/users/delete/{id}(id=${corpuser.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+<a href="/users/add" class="btn btn-primary w3-button w3-orange">Add Users Account</a>
+<a href="/users/add/hr"class="btn btn-primary w3-button w3-orange">Add HR Admin Account</a>
+<a href="/users/add/cs" class="btn btn-primary w3-button w3-orange">Add Counter staff Account</a>
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>
+
+
+

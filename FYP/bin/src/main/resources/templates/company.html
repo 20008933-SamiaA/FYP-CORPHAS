@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Corphas- View List of Companies</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+<link href="/font-awesome/css/brands.min.css" rel="stylesheet" />
+<link href="/font-awesome/css/solid.min.css" rel="stylesheet" />
+</head>
+<style>
+.h1 {
+	text-align: center;
+}
+
+.container {
+	height: 200px;
+	padding-top: 100px;
+}
+
+#btn {
+	font-size: 25px;
+}
+
+.containerSubmit {
+	text-align: center;
+}
+
+.search {
+	text-align: center;
+}
+</style>
+<body  style="background-color: #FFFACD;">
+	<div th:replace="fragments/header"></div>
+	<!-- Search function-->
+	<br>
+	<div class="search">
+		<form th:action="@{/company}">
+			Search: <input type="text" name="keyword" th:value="${keyword}"
+				required /> &nbsp; <input class="btn btn-primary" type="submit"
+				value="Search" /> &nbsp; <input class="btn btn-warning"
+				type="button" value="Clear" onclick="clearFilter()" />
+		</form>
+
+		<script type="text/javascript">
+			function clearFilter() {
+				window.location = '/company'; //redirect back to orignal company page
+			}
+		</script>
+	</div>
+	<!-- end Search function-->
+	<div class="container">
+		<div class="h1">View companies</div>
+		<table class="table table-hover">
+			<thead>
+				<th>ID</th>
+				<th>name</th>
+				<th>HR Name</th>
+				<th>HR Num</th>
+				<th>email</th>
+				<th></th>
+
+			</thead>
+
+			<tbody>
+
+				<th:block th:each="company : ${listcompany}">
+					<tr>
+						<td th:text="${company.id}"></td>
+						<td th:text="${company.name}"></td>
+						<td th:text="${company.hr_name}"></td>
+						<td th:text="${company.num}"></td>
+						<td th:text="${company.email}"></td>
+
+
+						<td><a th:href="@{/company/edit/{id}(id=${company.id})}"><i
+								class="fas fa-pencil-alt"></i></a></td>
+						<td><a th:href="@{/company/delete/{id}(id=${company.id})}"><i
+								class="fas fa-trash-alt"></i></a></td>
+					</tr>
+				</th:block>
+
+			</tbody>
+
+		</table>
+		<div class="containerSubmit">
+			<a class="btn btn-primary" href="/company/add">ADD COMPANY</a>
+		</div>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+
+
+</html>

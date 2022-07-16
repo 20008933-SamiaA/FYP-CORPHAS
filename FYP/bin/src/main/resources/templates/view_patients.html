@@ -1,0 +1,79 @@
+<!-- /**
+ * 
+ * I declare that this code was written by me, Rabiatul Adawiyah. 
+ * I will not copy or allow others to copy my code. 
+ * I understand that copying code is considered as plagiarism.
+ * 
+ * Student Name: Rabiatul Adawiyah
+ * Student ID: 20021900
+ * Class: E62F
+ * 
+ * 
+ */ --> 
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CorpHas-Patients</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+<style>
+.btn-text-center {
+	text-align: center;
+}
+</style>
+</head>
+<body style="background-color:#FFFACD;">
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<main class="btn-text-center">
+			<div class="h1">All Patients</div>
+			<div class="alert alert-primary " role="alert" th:text="${success}" th:if="${success}"></div>
+			<table class="table table-bordered table-hover btn-text-center">
+				<thead class="table-primary ">
+					<tr>
+						<th>ID</th>
+						<th>Full Name</th>
+						<th>DOB</th>
+						<th>Gender</th>
+						<th>Contact Number</th>
+						<th>Email</th>
+						<th>Emergency Contact Number</th>
+						<th>Relationship</th>
+						<th>Address</th>
+						<th>Postal Code</th>
+						<th>Marital Status</th>
+						<th>Medical Condition</th>
+						<th></th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="patient : ${listPatient}">
+						<td th:text="${patient.id}"></td>
+						<td>
+						<span th:text="${patient.firstName}"></span>
+						<span th:text="${patient.lastName}"> </span></td>
+						<td th:text="${patient.DOB}"></td>
+						<td th:text="${patient.sex}"></td>
+						<td th:text="${patient.contactNo}"></td>
+						<td th:text="${patient.email}"></td>
+						<td th:text="${patient.econtactNo}"></td>
+						<td th:text="${patient.rs}"></td>
+						<td th:text="${patient.streetAddr}"></td>
+						<td th:text="${patient.postalCode}"></td>
+						<td th:text="${patient.ms.ms}"></td>
+						<td th:text="${patient.medicalCondition}"></td>
+						<td><a th:href="@{/patients/edit/{id}(id=${patient.id})}">Edit</a> 
+							| <a th:href="@{/patients/delete/{id}(id=${patient.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="/patients/add" class="btn btn-danger w3-button w3-orange">Add Patient</a><br><br>
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>
+
