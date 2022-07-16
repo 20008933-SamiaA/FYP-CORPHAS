@@ -1,0 +1,81 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CorpHas- View Appointment</title>
+<meta name="viewport" content="width=device-width , initial-scale= 1">
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/css/bootstrap.js"></script>
+<style>
+.btn-text-center {
+	text-align: center;
+}
+</style>
+</head>
+<body style="background-color: #CCCCFF;">
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<div class="h1 btn-text-center">Your Appointments!</div>
+		<table class="table table-bordered table-hover btn-text-center"
+			border=1 width=100%>
+			<thead class="table-primary">
+				<tr>
+					<th>APPOINTMENT ID</th>
+					<th>CORPORATE & EMPLOYEE ID</th>
+					<th>Date/Time</th>
+					<th>Location</th>
+					<th>Choosen Package</th>
+					<th>Employee Type</th>
+					<th>Status</th>
+					<th sec:authorize="hasRole('ADMIN')">Action</th>
+					<th></th>
+					<th></th>
+			
+
+				</tr>
+			</thead>
+
+			<tbody class="table-light">
+				<th:block th:each="appointment: ${listAppointment}">
+					<tr>
+						<td><a
+							th:href="@{appt/{apptid}(apptid=${appointment.apptid})}"
+							th:text="${appointment.apptid }"></a><br>
+						<td><span th:text="${appointment.corporateid }"></span> |
+						<span th:text="${appointment.employeeid }"></span>
+						 </td>
+	
+						<td>
+							<p th:text="${appointment.date}"></p>
+						<p th:text="${appointment.timesch.time}"></p>
+
+
+						<td th:text="${appointment.location}"></td>
+						<td th:text="${appointment.packages.pname}"></td>
+						<td th:text="${appointment.emptype.emptype}"></td>
+						<td th:text="${appointment.status}"
+							th:styleappend="${appointment.status=='Ongoing' ? 'background-color:rgba(102, 102, 255, 0.7)': appointment.status=='Cancelled' ? 'background-color:rgba(255, 38, 0, 0.7)' : appointment.status=='Completed' ? 'background-color:rgba(0, 255, 40, 0.7)' : '#fffff'}"></td>
+						<td><a th:href="@{/appt/edit/{id}(id=${appointment.apptid})}"  sec:authorize="hasRole('ADMIN')">Edit</a>
+						<a th:href="@{/appt/reschedule/{id}(id=${appointment.apptid})}"  sec:authorize="hasRole('USER')">Reschedule Appt</a>
+			
+						<a
+							th:href="@{/appt/delete/{id}(id=${appointment.apptid})}"  sec:authorize="hasRole('ADMIN')">Delete</a></td>
+						
+						<td><a class="text-decoration-none"
+							th:href="@{/appt/testresults}"  sec:authorize="hasRole('ADMIN')">Upload Test Report</a></td>
+
+						
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+
+
+		<footer>
+	
+				<div th:replace="fragments/footer"></div>
+			
+		</footer>
+	</div>
+</body>
+</html>

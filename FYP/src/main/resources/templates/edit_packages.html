@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>corpHAS - Edit Packages</title>
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+</head>
+<body><div th:replace="fragments/header"></div>
+	<div class="container">
+		
+		<main>
+			<h1>Edit Packages</h1>
+			<form th:action="@{/packages/edit/{id}(id=${package.id})}"
+				 method="post" th:object="${package}">
+
+				<div class="mb-3 col-5">
+				<label for="package_name" class="form-label">Package:</label> <input
+					id="package_name" type="text" class="form-control"
+					th:field="*{pname}" required minlength=5 maxlength=50>
+
+				<div class="invalid-feedback">Package Name length must be 5 to 70
+					characters!</div>
+			</div>
+
+			<div class="mb-3 col-5">
+				<label for="item_cost" class="form-label">Cost:</label> <input
+					id="item_cost" type="number" class="form-control" th:field="*{cost}" required min="0.00" step="0.01">
+				<div class="invalid-feedback">Package Price must be positive
+					numerical values</div>
+			</div>
+
+			<div class="mb-3 col-5">
+				<label for="item_type" class="form-label">Type:</label> <input
+					id="item_type" type="text" class="form-control"
+					th:field="*{type}" required minlength=5 maxlength=50>
+
+				<div class="invalid-feedback">Package Type length must be 5 to 50
+					characters!</div>
+			</div>
+			<div class="mb-3 col-5">
+				<label for="item_info" class="form-label">Description:</label> <textarea
+					id="item_info" type="text" class="form-control"
+					th:field="*{description}" required minlength=20 maxlength=1000 rows="3"></textarea>
+				<div class="invalid-feedback">Description length must be 20 and 1000 characters!</div>
+			</div>
+
+				
+				
+				<div class="mt-3 mb-5">
+					<input type="submit" value="Update Package">
+				</div>
+				
+				<!-- Validation Code -Start -->
+			<script>
+				'use strict'
+				var form = document.querySelector('.needs-validation')
+				form.addEventListener('submit', function(event) {
+					if (!form.checkValidity()) {
+
+						event.preventDefault()
+						event.stopPropagation()
+
+					}
+
+					form.classList.add('was-validated')
+
+				})
+			</script>
+			<!-- Validation Code -End -->
+			</form>
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>

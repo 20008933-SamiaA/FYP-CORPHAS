@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+
+<style>
+/* * {
+	box-sizing: border-box;
+	padding: 1px
+}
+ */
+.btn-text-center {
+	text-align: center;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: both;
+}
+/* for image to be reponsive */
+/* @media screen and (max-width: 500px) {
+	.column {
+		width: 100%
+	}
+} */
+footer {
+	position: fixed;
+	padding: 10px 10px 0px 10px;
+	bottom: 0;
+	width: 100%;
+	/* Height of the footer*/
+	height: 50px;
+}
+
+h6 {
+	text-align: center;
+}
+
+center {
+	text-align: center;
+}
+
+ol {
+	width: 50%;
+	margin: auto;
+}
+</style>
+
+<title>CorpHas-Contact Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: lightblue;">
+	<div>
+		<div>
+			<div th:replace="fragments/header"></div>
+			<div class="container my-5 pt-5 "
+				style="height: 500px; background-color:SlateBlue; border-style: solid;">
+
+				<p style="font-size: 40px; text-align: center; color:White;">
+					<b>GET IN TOUCH</b></p>
+					
+					<div  class="btn-text-center">
+					<i class="fa fa-phone-square" style="font-size:50px;color:white"></i>
+					<p style="font-size: 25px;">24-Hour Helpline: +65 6735 5000</p>
+					</div>
+					<br>
+					<div  class="btn-text-center">
+				<i class="fa fa-envelope" style="font-size:50px;color:white"></i>
+				<p style="font-size: 25px;"> <u>cpac@parkwaypantai.com</u></p>
+				</div>
+				<br>
+							<div  class="btn-text-center">
+					<i class="fa fa-map-marker" style="font-size:50px;color:white"></i>
+				<p style="font-size: 25px;"> 111 Somerset Rd, Singapore 238164</p>
+				</div>
+			
+				</div>
+			
+				
+				<!--Location-->
+				<div class="btn-text-center">
+					<p style="font-size: 40px; text-align: center; color:black;"class="fa fa-map-pin">
+					<u>We Are Located Here:</u></p> 
+					<p>
+						
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.791103610175!2d103.83510651409195!3d1.300173862096834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1990e8a47437%3A0x8e44914bfeb4fe5f!2s111%20Somerset%20Rd%2C%20TripleOne%20Somerset%2C%20Singapore%20238164!5e0!3m2!1sen!2ssg!4v1654281016608!5m2!1sen!2ssg"
+							width="600" height="450" style="border: 0;" allowfullscreen=""
+							loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		
+					</p>
+			
+				</div>
+
+			</div>
+			<br>
+			<div th:replace="fragments/footer"></div>
+
+		</div>
+</body>
+</html>
+
+

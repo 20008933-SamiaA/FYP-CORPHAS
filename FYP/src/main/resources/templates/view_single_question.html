@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CORPHAS - View Single Question</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
+	integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd"
+	crossorigin="anonymous">
+</head>
+<style>
+.container {
+	text-align: center;
+}
+
+.pure-input-rounded {
+	margin: 10px;
+	height: 50px;
+	text-align: center;
+}
+
+input {
+	display: table-cell;
+}
+
+label {
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+}
+</style>
+<body>
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<main>
+			<label>Title</label> <input class="pure-input-rounded"
+				style="background-color: lightgray" type="text" value="title"
+				name="title" th:value="${question.description}" readonly> <br>
+			<label>Option A</label> <input class="pure-input-rounded"
+				style="background-color: lightgray" type="text" value=OptionA
+				name="OptionA" th:value="${question.optionA}" readonly> <br>
+			<label>Option B</label> <input class="pure-input-rounded"
+				style="background-color: lightgray" type="text" value="OptionB"
+				name="OptionB" th:value="${question.optionB}" readonly> <br>
+			<label>Option C</label> <input class="pure-input-rounded"
+				style="background-color: lightgray" type="text" value="OptionC"
+				name="OptionC" th:value="${question.optionC}" readonly> <br>
+
+		</main>
+	</div>
+	<div th:replace="fragments/footer"></div>
+
+</body>
+</html>

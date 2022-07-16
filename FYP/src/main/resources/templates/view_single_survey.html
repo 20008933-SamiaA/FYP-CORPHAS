@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CORPHAS - View Single Company</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet"
+	href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
+	integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd"
+	crossorigin="anonymous">
+</head>
+<style>
+.container {
+	text-align: center;
+	margin: 20px;
+}
+
+#btn {
+	font-size: 25px;
+}
+
+.textContainer {
+	padding: 20px;
+}
+
+label {
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+}
+
+.button {
+	border: none; /* Remove borders */
+	color: black; /* White text */
+	padding: 12px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer;
+	border: none; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.button:hover {
+	background-color: #FFFACD;
+}
+
+.pure-input-rounded {
+	margin: 10px;
+	height: 50px;
+	text-align: center;
+}
+
+input {
+	display: table-cell;
+}
+
+table {
+	margin: 50px;
+}
+</style>
+<body style="background-color: #FFFACD;">
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<main>
+			<div class="textContainer">
+				<label>ID</label> <input class="pure-input-rounded"
+					style="background-color: lightgray;" type="text" name="CompanyId"
+					value="ID" th:value="${survey.surveyId}" readonly><br> 
+
+					<label>NRIC</label> <input class="pure-input-rounded"
+					style="background-color: lightgray" type="text" name="nric"
+					value="nric" th:value="${survey.nric}" readonly> <br>
+					
+					<label>Employee Id</label> <input class="pure-input-rounded"
+					style="background-color: lightgray" type="text" name="employeeId"
+					value="employeeId" th:value="${survey.employeeId}" readonly> <br>
+
+					<label>Age</label> <input class="pure-input-rounded"
+					style="background-color: lightgray;" type="text" name="age"
+					value="age" th:value="${survey.age}" readonly><br> <label>Gender</label>
+					<input class="pure-input-rounded"
+					style="background-color: lightgray;" type="text" name="gender"
+					value="gender" th:value="${survey.gender}" readonly><br>
+
+					<label>Smoke</label> <input class="pure-input-rounded"
+					style="background-color: lightgray;" type="text" name="smoke"
+					value="smoke" th:value="${survey.smoke}" readonly><br>
+
+					<label>How Many Hours Do You Sleep</label> <input
+					class="pure-input-rounded" style="background-color: lightgray;"
+					type="text" name="sleep" value="sleep" th:value="${survey.sleep}"
+					readonly><br> 
+					<label>Do You Have Trouble
+						Sleeping?</label> <input class="pure-input-rounded"
+					style="background-color: lightgray;" type="text" name="troubleSleeping"
+					value="troubleSleeping" th:value="${survey.troubleSleeping}" readonly><br>
+
+					<label>Do You Consider Yourself Stressed?</label> <input
+					class="pure-input-rounded" style="background-color: lightgray;"
+					type="text" name="stress" value="stress"
+					th:value="${survey.stress}" readonly><br> 
+					
+					<label>What
+						Is Your Cause Of Stress?</label> <input class="pure-input-rounded"
+					style="background-color: lightgray;" type="text" name="CauseOfStress"
+					value="CauseOfStress" th:value="${survey.CauseOfStress}" readonly><br>
+			</div>
+		
+		</main>
+	</div>
+	<div th:replace="fragments/footer"></div>
+
+</body>
+</html>

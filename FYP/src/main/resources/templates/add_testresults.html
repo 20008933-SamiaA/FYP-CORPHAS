@@ -1,0 +1,120 @@
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CORPhas - Add Test Results</title>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+
+<style>
+​
+</style>
+
+
+
+
+
+
+
+</head>
+<body>
+	<div th:replace="fragments/header"></div>
+	<div class="container">
+		<main>
+			<h1>Add Test Results</h1>
+
+
+
+			<form class="needs-validation" action="/testresults/save"
+				th:object="${test_results}" novalidate method="post">
+				<!--  		<div class="mb-3 col-5">
+				<label for="package_name" class="form-label">Package ID:</label> <input
+					id="package_name" type="number" class="form-control"
+					th:field="*{packages}" >
+                      <div class="mb-3 col-5">
+				<label for="package_name1" class="form-label">Item ID:</label> <input
+					id="package_name1" type="number" class="form-control"
+					th:field="*{items}" >
+
+			</div>
+				
+			</div>-->
+
+				<div>
+					Package: <select style="pointer-events: none;"
+						th:field="*{appointment}">
+
+
+						<option selected th:each="a : ${listA}" th:value="${a.apptid}"
+							th:text="${a.apptid}"></option>
+
+
+					</select>
+
+				</div>
+
+
+				&nbsp;
+
+
+				<div>
+					Items: <select th:field="*{items}">
+						<option value="">Choose one</option>
+						<option th:each="i : ${listI}" th:value="${i.id}"
+							th:text="${i.name}"></option>
+
+
+
+					</select>
+
+
+				</div>
+
+				&nbsp;
+				<div class="mb-3 col-5">
+					<label for="testresult" class="form-label">Result: </label> <input
+						id="testresult" type="text" class="form-control"
+						th:field="*{result}" required>
+
+				</div>
+
+
+
+
+				<div class="mt-3">
+					<button type="submit" class="btn btn-primary">Add Results</button>
+				</div>
+				&nbsp;
+
+
+			</form>
+
+
+
+			<form class="needs-validation" action="/appt" method="get">
+
+				<div class="mt-3">
+					<button type="submit" class="btn btn-primary">Save&Exit</button>
+				</div>
+
+			</form>
+
+
+
+
+		</main>
+		<div th:replace="fragments/footer"></div>
+	</div>
+</body>
+</html>

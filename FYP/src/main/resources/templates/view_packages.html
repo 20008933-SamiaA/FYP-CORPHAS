@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>CorpHAS - View Packages</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="/bootstrap/css/bootstrap.js"></script>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+	float: left;
+	width: 60%;
+	padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+	margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Style the counter cards */
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	/* this adds the "card" effect*/
+	padding: 0px; /*This changes the position of info in the card*/
+	text-align: center;
+	background-color: #f1f1f1;
+	margin-top: 70px;
+	width: 340px;
+	height: 340px;
+	margin-right: 122px;
+	margin-left: 100px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens 
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
+}*/
+.navbar .navbar-nav .nav-link:hover {
+	background-color: #CDD7E2;
+	color: #fff;
+}
+
+.navbar .navbar-nav .nav-link {
+	padding: 0.6em;
+}
+
+.navbar .navbar-brand {
+	padding: 0 0.0em;
+}
+
+
+
+.card-header {
+	background-color: #d9ddf6;
+	border-bottom: 1px solid rgba(0, 0, 0, .125);
+	font-weight: 700;
+}
+
+.card-header h4 {
+	font-weight: 700;
+}
+
+.card-header a {
+	color: Black;
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+.card-header a:hover {
+	color: Black;
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+.card-header1 {
+	background-color: #d9f6e3;
+	border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.btn-text-center {
+	text-align: center;
+}
+
+.img1 img {
+	width: 50%;
+	height: 400px;
+	float: left;
+}
+
+.img1 a {
+	font-size: 10px;
+	position: absolute;
+	bottom: 70px;
+	left: 0;
+}
+
+/* Nav Bar */
+#header {
+	position: fixed;
+}
+
+#content {
+	margin-top: 100px;
+}
+
+.bb {
+	text-align: center;
+}
+
+.text {
+	
+}
+
+.container {
+	margin-top: 14%;
+}
+
+.container-fluid {
+	width: 100%;
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0
+}
+
+.container-fluid a {
+	text-align: justify;
+}
+
+.text h5 {
+	color: grey
+}
+
+
+</style>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		<a class="navbar-brand" href="/home"> <img
+			src="/images/corphas.jpg" class="img-fluid" style="width: 73%;">
+			<!-- <span class="navbar-brand h1">CorpHas</span> -->
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<!-- Home -->
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/home">Home</a></li>
+
+				<!-- Packages and Items -->
+				<li class="nav-item dropdown"><a
+					class="nav-link text-primary dropdown-toggle"
+					data-bs-toggle="dropdown" href="/packages">Our Packages</a>
+					<div class="dropdown-menu" style="background-color: #fdad5c;">
+						<a class="dropdown-item" href="/packages">[Check out our
+							packages]</a> <a class="dropdown-item" href="/items">[Items]</a> <a
+							class="dropdown-item" href="/File/PackageSummary.pdf" download>
+							[Download Package Summary Here!]</a>
+					</div></li>
+
+				<!-- Users -->
+				<li class="nav-item dropdown"><a
+					class="nav-link text-primary dropdown-toggle"
+					data-bs-toggle="dropdown" href="">Users</a>
+					<div class="dropdown-menu" style="background-color: #fdad5c;">
+						<a class="dropdown-item" href="/users">[Users]</a> <a
+							class="dropdown-item" href="/employee">[Employee]</a> <a
+							class="dropdown-item" href="/managers">[Managers]</a> <a
+							class="dropdown-item" href="/counterstaff">[Counter Staff]</a> <a
+							class="dropdown-item" href="/questions">[Survey Questions]</a>
+
+					</div></li>
+
+				<!-- Company -->
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/company">Corporate</a></li>
+
+				<!-- Appointment -->
+				<li class="nav-item "><a class="nav-link text-primary"
+					href="/appt">Appointment</a></li>
+
+				<!--Patients-->
+				<li class="nav-item "><a class="nav-link text-primary"
+					href="/patients">Patients</a></li>
+
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/aboutus">About Us</a></li>
+
+				<li class="nav-item"><a class="nav-link text-primary"
+					href="/contactus">Contact Us</a></li>
+				<li class="nav-item d-flex mx-5 px-5"><a
+					sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Login</a>
+					<form sec:authorize="isAuthenticated()" th:action="@{/logout}"
+						method="post" class="">
+						<button class="btn nav-link btn-warning text-primary"
+							type="submit">Logout</button>
+					</form></li>
+
+				<li class="nav-item mx-5 ">
+					<div sec:authorize="isAuthenticated()">
+						<a data-toggle="tooltip" data-placement="bottom" data-html="true"
+							title="account details" class="nav-link" href="#"><span
+							sec:authentication="principal.username"></span></a>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</nav>
+</header>
+
+
+<body  class="bb" style="background-color: #f0f0f4;">
+
+	<!-- -	<div class=img1>
+		<img class=lImg src="images/patient.jpg"
+			alt="Health check vector created by pikisuperstar - www.freepik.com" ><a href="https://www.freepik.com/vectors/health-check">Designed by
+			Freepik</a><div class="text-block">
+    <h4>Health Screening</h4>
+    <p>A health screening tailored to your needs.<br>
+      We offer a variety of comprehensive packages to suit your individual needs.<br>
+      You are able to choose additional items in your packages.</p>
+  </div>
+	</div>
+		 -->
+
+	<div  class="container-fluid">
+		<div  class="img1">
+			<img class="image" src="images/patient.jpg" /> <a
+				href="https://www.freepik.com/vectors/health-check">Designed by
+				Freepik</a>
+			<div class="text">
+
+				&nbsp;
+				<h2>Health Screening</h2>
+				&nbsp;
+				<h5>
+					&nbsp; Invest in health screening packages that focus on the early
+					detection of conditions and diseases to maintain overall health!<br>
+					<br> &nbsp;We offer comprehensive health screening packages
+					ranging from simple to sophisticated full-body examinations. <br>
+					<br> Below you will find more information about our general
+					health screening packages:
+				</h5>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="container" id="c">
+		&nbsp;
+		<h1>Our Packages</h1>
+		<!-- Search function-->
+		<div>
+			<form th:action="@{/packages#c}">
+				Search: <input type="text" name="keyword" th:value="${keyword}"
+					required /> &nbsp; <input class="btn btn-primary" type="submit"
+					value="Search" /> &nbsp; <input class="btn btn-warning"
+					type="button" id="button-click" value="Clear"
+					onclick="clearFilter()" />
+			</form>
+
+			<script type="text/javascript">
+				function clearFilter() {
+					window.location = '/packages#c'; //redirect back to orignal package page
+				}
+			</script>
+		</div>
+		<!-- end Search function-->
+
+		
+		<div class="row">
+			<th:block th:each="package : ${listPackages}">
+
+
+
+				<div class="card">
+					<div class="card-header">
+						<a th:href=@{/Pitems/package/{id}(id=${package.id})}><h4
+								th:text="${package.pname}"></h4></a>
+					</div>
+					<div class="card-header1">
+						$<a th:text="${package.cost}"></a>
+					</div>
+					<div class="card-body">
+
+						<p class="card-text">
+						<p th:text="${package.description}"></p>
+						</p>
+
+						
+							<!--  class="btn btn-danger w3-button w3-orange"-->
+						<td><a th:href=@{/Pitems/add/{id}(id=${package.id})} class="btn btn-danger w3-button w3-orange">Add Items</a>&nbsp;
+						&nbsp;</td>
+						<td><a th:href="@{/packages/edit/{id}(id=${package.id})}">Edit</a></td>&nbsp;
+						&nbsp;
+						<td><a th:href="@{/packages/delete/{id}(id=${package.id})}"
+							onclick="return confirm('Are you sure you want to delete this item?');"
+							id="delete_id">Delete</a></td>
+					</div>
+
+				</div>
+
+			</th:block>
+
+<!--  <div sec:authorize="hasRole('ADMIN')">-->
+		
+<!-- 	</div>-->
+
+
+		</div>
+
+
+	</div>
+	<a href="/packages/add" class="btn btn-danger w3-button w3-orange">Add
+			Packages</a>
+
+
+	&nbsp; &nbsp;
+	
+	<br>
+	<br>
+	<br>
+
+</body>
+
+</html>

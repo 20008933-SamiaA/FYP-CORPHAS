@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<style>
+/* * {
+	box-sizing: border-box;
+	padding: 1px
+}
+ */
+.btn-text-center {
+	text-align: center;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: both;
+}
+/* for image to be reponsive */
+/* @media screen and (max-width: 500px) {
+	.column {
+		width: 100%
+	}
+} */
+footer {
+	position: fixed;
+	padding: 10px 10px 0px 10px;
+	bottom: 0;
+	width: 100%;
+	/* Height of the footer*/
+	height: 50px;
+}
+
+h6 {
+	text-align: center;
+}
+
+center {
+	text-align: center;
+}
+
+ol {
+	width: 50%;
+	margin: auto;
+}
+</style>
+
+<title>CorpHas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: lightblue;">
+	<div>
+		<div>
+			<div th:replace="fragments/header"></div>
+			<div class="container my-5 pt-5 "
+				style="height: 500px; background-color: SlateBlue; border-style: solid;">
+
+
+				<p style="font-size: 40px; text-align: center; color: white">
+					<b>About Us</b>
+				</p>
+				<div class="btn-text-center">
+					<p style="font-size: 20px; text-align: center; color: white">Parkway Hospitals, Singapore, a wholly-owned subsidiary of
+						Parkway Pantai Limited, is one of the leading providers of private
+						healthcare services in Asia. This reputation is the result of
+						quality clinical outcomes and comprehensive care, made achievable
+						with an extensive network of hospitals, integrated healthcare
+						facilities and over 40 years of experience in hospital
+						development. Parkway Hospitals, Singapore operates 4 hospitals -
+						Gleneagles Hospital, Mount Elizabeth Hospital, Mount Elizabeth
+						Novena Hospital and Parkway East Hospital, where
+						multi-disciplinary specialist care is effectively administered in
+						one place. Its medical services and facilities house more than
+						1,000 beds and 1,200 accredited specialists. In order to reach out
+						to an international pool of patients, Parkway Hospitals, Singapore
+						also operates more than 35 patient assistance centres worldwide.
+
+						Parkway Hospitals, Singapore seeks to be the global leader in
+						value-based integrated healthcare. Leveraging on its pursuit for
+						quality excellence, comprehensive clinical programmes and
+						facilities, Parkway Hospitals, Singapore strives to meet patients
+						expectations through quality healthcare.</p>
+				</div>
+
+			</div>
+			<div th:replace="fragments/footer"></div>
+
+		</div>
+</body>
+</html>
+
+

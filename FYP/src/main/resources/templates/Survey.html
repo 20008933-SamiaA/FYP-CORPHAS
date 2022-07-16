@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Survey</title>
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/css/bootstrap.js"></script>
+
+</head>
+<style type="text/css">
+label {
+	padding: 10px;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+.form-style-5 {
+	max-width: 800px;
+	padding: 10px 20px;
+	background: #f4f7f8;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 10px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.form-style-5 fieldset {
+	border: none;
+}
+
+.form-style-5 legend {
+	font-size: 1.4em;
+	margin-bottom: 10px;
+}
+
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+/* .form-style-5 select {
+	display: block;
+	margin-bottom: 8px;
+} */
+.form-style-5 input[type="text"]:focus {
+	margin: auto;
+	display: block;
+}
+
+.form-style-5 input[type="text"], .form-style-5 input[type="text"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="text"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"],
+	.form-style-5 input[type="radio"], .form-style-5 input[type="radio"] {
+	font-family: "Times New Roman";
+	background: rgba(255, 255, 255, .1);
+	border: none;
+	border-radius: 4px;
+	font-size: 17px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: black;
+	color: white;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.form-style-5 input[type="text"]:focus, .form-style-5 input[type="text"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="text"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus,
+	.form-style-5 input[type="radio"]:focus, .form-style-5 input[type="radio"]:focus
+	{
+	background: #d2d9dd;
+}
+
+.form-style-5 .radio {
+	background: #1abc9c;
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+	border-radius: 15px 15px 15px 0px;
+	width: 30px;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.form-style-5 a[type="submit"], .form-style-5 input[type="button"]
+	{
+	position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: black;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 100%;
+	border: 1px solid;
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+}
+
+/* .form-style-5 button[type="submit"]:hover, .form-style-5 input[type="button"]:hover
+	{
+	background: blue;
+} */
+</style>
+<div th:replace="/fragments/header"></div>
+
+<body style="background-color: #CCCCFF;">
+	<div class="container">
+		<!-- "h-screen flex flex-col items-center justify-center border rounded" -->
+		<h1>Survey</h1>
+		<form id="surveyForm" class="needs-validation"
+			th:action="@{/survey/save}" method="post" th:object="${survey}"
+			novalidate>
+			<div class="mb-3 col-8 form-style-5">
+				<!-- 	<div class="mb-3 col-5">
+				<label for="survey_id" class="form-label"> SurveyId: </label> <input
+					id="survey_id" type="text" class="form-control"
+					th:field="*{survey.id}" required />
+				<div class="invalid-feedback">please enter a ID!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('description')}"
+					th:error="*{description}"></p>
+			</div> -->
+				<label for="survey_employeeId" class="form-label"> <b>Employee
+						ID: </b></label> <input id="survey_employeeId" type="text"
+					class="form-control" th:field="*{employeeId}" required
+					pattern="EMP\d\d\d\d\d" />
+				<div class="invalid-feedback">please enter a Employee Id!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('employeeId')}"
+					th:error="*{employeeId}"></p>
+
+
+				<label for="survey_Nric" class="form-label"> <b>NRIC: </b></label> <input
+					id="survey_nric" type="text" class="form-control"
+					th:field="*{nric}" required pattern="^[STFG]\d{7}[A-Z]$" />
+				<div class="invalid-feedback">please enter a NRIC!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('nric')}"
+					th:error="*{nric}"></p>
+
+				<label><b> Please Indicate your age</b></label> </br> <label for="age">
+					<input type="radio" id="1" name="age" value="18-29" required>18-29</input>
+				</label> </br> <label for="age"> <input type="radio" id="1" name="age"
+					value="30-39" required>30-39</input>
+				</label> </br> <label for="age"> <input type="radio" id="1" name="age"
+					value="40-49">40-49</input>
+				</label> </br> <label for="age"> <input type="radio" id="1" name="age"
+					value="50-59">50-59</input>
+				</label> </br> <label for="age"> <input type="radio" id="1" name="age"
+					value="60 and above">60 and above</input>
+				</label></br>
+				<div class="invalid-feedback">please enter Your Age Range!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('age')}"
+					th:error="*{age}"></p>
+
+				<label for="survey_gender" class="form-label"><b>Gender:
+				</b></label> <input id="survey_gender" type="text" class="form-control"
+					th:field="*{gender}" required min=1 maxlength=6 />
+				<div class="invalid-feedback">please enter Gender!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('gender')}"
+					th:error="*{gender}"></p>
+
+				<label required><b>Do You Smoke</b></label> </br> <label for="smoke">
+					<input type="radio" id="1" name="smoke" value="yes" required>YES</input>
+				</label> </br> <label for="smoke"> <input type="radio" id="1"
+					name="smoke" value="no">NO</input></label>
+				<div class="invalid-feedback">please Select An Option!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('smoke')}"
+					th:error="*{smoke}"></p>
+
+				</label> </br> <label required><b> Please Indicate How Many Hours Do
+						You Sleep</b></label> </br> <label for="sleep"> <input type="radio"
+					id="sleep1" name="sleep" value="Less than 8 Hours" required>Less
+					Than 8 Hours</input>
+				</label> </br> <label for="sleep"> <input type="radio" id="sleep2"
+					name="sleep" value="More Than 8 hours">More Than 8 hours</input></label>
+				<div class="invalid-feedback">please Select An Option!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('sleep')}"
+					th:error="*{sleep}"></p>
+				</label> </br> <label><b> Do You Have Trouble Sleeping</b></label> </br> <label
+					for="troubleSleeping"> <input type="radio" id="1"
+					name="troubleSleeping" value="yes" required>YES</input>
+				</label> </br> <label for="troubleSleeping"> <input type="radio" id="1"
+					name="troubleSleeping" value="no">NO</input>
+				</label>
+				<div class="invalid-feedback">please Select An Option!</div>
+				<p class="text-danger"
+					th:if="${#fields.hasErrors('troubleSleeping')}"
+					th:error="*{troubleSleeping}"></p>
+				</label> </br> <label><b>Do You Consider Yourself Stressed out</label> </b></br> <label
+					for="stress"> <input type="radio" id="stress1"
+					name="stress" value="yes" required>YES</input>
+				</label> </br> <label for="stress"> <input type="radio" id="stress2"
+					name="stress" value="no">NO</input>
+				</label>
+				<div class="invalid-feedback">please Select An Option!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('stress')}"
+					th:error="*{stress}"></p>
+				</label></br> <label><b>What Is Your Main Cause Of Stress</b></label> </br> <label
+					for="CauseOfStress"> <input type="radio" id="family"
+					name="CauseOfStress" value="family" required>family</input>
+				</label> </br> <label for="CauseOfStress"> <input type="radio" id="work"
+					name="cause" value="CauseOfStress">work</input>
+				</label> </br> <label for="CauseOfStress"> <input type="radio" id="money"
+					name="CauseOfStress" value="money">Money</input>
+				</label> </br> <label for="CauseOfStress"> <input type="radio"
+					id="Others" name="CauseOfStress" value="others">Others</input>
+				</label> </br>
+				<div class="invalid-feedback">please Select An Option!</div>
+				<p class="text-danger" th:if="${#fields.hasErrors('CauseOfStress')}"
+					th:error="*{CauseOfStress}"></p>
+
+
+				<div class="mt-3">
+					<a class="button button:hover" type="submit" href="/appt/add" >Finish Survey</a> 
+				</div>
+			</div>
+		</form>
+		<!-- Form validation -->
+		<script>
+			'use strict'
+
+			var form = document.querySelector('.needs-validation')
+
+			form.addEventListener('submit', function(event) {
+				if (!form.checkValidity()) {
+					event.preventDefault()
+					event.stopPropagation()
+				}
+
+				form.classList.add('was-validated')
+			})
+		</script>
+		<!-- End of Form Validation -->
+	</div>
+	<div th:replace="/fragments/footer"></div>
+
+</body>
+
+</html>
